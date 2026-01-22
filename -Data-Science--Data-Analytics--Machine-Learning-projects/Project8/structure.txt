@@ -1,0 +1,49 @@
+Project8-Predictive-Maintenance/
+├── data/                   # Raw and processed NASA datasets
+│   ├── raw/                # Original PM_train.txt, PM_test.txt
+│   └── processed/          # Scaled and engineered features (CSV/Parquet)
+├── notebooks/              # For experimentation and visualization
+│   └── 01_eda_and_feature_engineering.ipynb
+│   └── 02_model_training_lstm.ipynb
+│   └── 03_explainability_shap.ipynb
+├── src/                    # Reusable Python scripts (the "Engine")
+│   ├── __init__.py
+│   ├── data_preprocessing.py # Script for scaling and rolling windows
+│   ├── model_factory.py      # LSTM/Attention model architectures
+│   └── evaluation.py         # Custom metrics like R2 and MAE
+├── models/                 # Saved .h5 or .keras model files
+├── reports/                # Final PDF report and saved plots
+├── requirements.txt        # For environment reproducibility
+└── README.md               # The most important part of your portfolio
+
+
+
+
+
+
+
+1. Virtual Environments (venv)
+The Concept: You learned that a venv is a local "toolbox" for your project. You don't need a new one for every folder if projects are similar, but it's best practice for isolation.
+
+The Mistake: Initially, Git tried to track the venv folder, causing 920+ unwanted changes to appear.
+
+The Fix: You created a .gitignore file in the root directory and added venv/ to it, which instantly cleaned up your Git status.
+
+2. Environment & Folder Management
+OneDrive Caution: We identified that working directly inside a OneDrive folder can cause "sync locks" and permission errors because OneDrive and Git both try to control the files at the same time.
+
+Identity: You configured your global Git identity using:
+
+git config --global user.name "Rohit Shinde"
+
+git config --global user.email "rshinde2603@gmail.com"
+
+3. Solving GitHub Connection Issues
+The Error: You encountered a 403 Forbidden error, meaning GitHub recognized you but wouldn't let you "write" to the repository.
+
+The Permission Popup: VS Code suggested "Creating a Fork" because it didn't realize you were the owner of the repo.
+
+The Ultimate Fix: You bypassed all login popups by using a Personal Access Token (PAT). By running git remote set-url origin https://<TOKEN>@github.com/..., you "hardcoded" your permission, which finally allowed you to push your code
+
+
+
