@@ -1,0 +1,5 @@
+Account_ID,Sector,Probability_of_Default,Risk_Rating,Expected_Loss,Survival_Score_30D
+ACC_001,Tech,0.02,AAA,$200,98%
+ACC_034,Energy,0.94,C (Default Imminent),"$9,400",6%
+ACC_067,Retail,0.15,A,"$1,500",85%
+ACC_092,Manufacturing,0.88,CC,"$8,800",12%
