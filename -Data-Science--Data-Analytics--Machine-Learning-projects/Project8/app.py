@@ -49,7 +49,7 @@ def generate_fleet_intelligence():
 fleet_intel = generate_fleet_intelligence()
 
 # --- 3. SIDEBAR CONTROLS (Interactivity) ---
-st.sidebar.title("🎛️ Control Panel")
+st.sidebar.title(" Control Panel")
 risk_filter = st.sidebar.multiselect("Filter by Risk Category", ["High", "Medium", "Low"], default=["High", "Medium", "Low"])
 min_cycles = st.sidebar.slider("Minimum Asset Life (Cycles)", 0, int(fleet_intel['Total_Cycles'].max()), 0)
 
@@ -57,7 +57,7 @@ min_cycles = st.sidebar.slider("Minimum Asset Life (Cycles)", 0, int(fleet_intel
 filtered_data = fleet_intel[(fleet_intel['Category'].isin(risk_filter)) & (fleet_intel['Total_Cycles'] >= min_cycles)]
 
 # --- 4. HEADER & KPIs ---
-st.title("🛡️ Predictive Fleet Risk Intelligence")
+st.title(" Predictive Fleet Risk Intelligence")
 st.markdown(f"**Enterprise Asset Management System** | Analyzing {len(fleet_intel)} Jet Engines in Real-Time")
 
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
@@ -72,7 +72,7 @@ st.markdown("---")
 col_left, col_right = st.columns([1, 1])
 
 with col_left:
-    st.subheader("📍 Asset Risk Mapping")
+    st.subheader(" Asset Risk Mapping")
     st.markdown("This quadrant identifies high-usage assets with critical risk scores.")
     fig_scatter, ax_scatter = plt.subplots(figsize=(8, 6))
     sns.scatterplot(data=filtered_data, x='Total_Cycles', y='Risk_Score', hue='Category', 
@@ -82,7 +82,7 @@ with col_left:
     st.pyplot(fig_scatter)
 
 with col_right:
-    st.subheader("📉 Sensor Degradation (Multi-Engine)")
+    st.subheader(" Sensor Degradation (Multi-Engine)")
     st.markdown("Overlaying the top 5 most at-risk engines to identify common decay patterns.")
     top_5_ids = filtered_data.sort_values('Risk_Score', ascending=False)['Asset_ID'].head(5).tolist()
     fig_line, ax_line = plt.subplots(figsize=(8, 6))
@@ -99,14 +99,14 @@ st.markdown("---")
 col_table, col_roi = st.columns([3, 2])
 
 with col_table:
-    st.subheader("📋 Detailed Maintenance Schedule")
+    st.subheader(" Detailed Maintenance Schedule")
     # Style the dataframe for a professional look
     st.dataframe(filtered_data.sort_values('Risk_Score', ascending=False).style.format({
         'Risk_Score': '{:.2%}'
     }).background_gradient(cmap='YlOrRd', subset=['Risk_Score']), use_container_width=True, height=300)
 
 with col_roi:
-    st.subheader("💰 'What-If' Savings Calculator")
+    st.subheader(" 'What-If' Savings Calculator")
     st.markdown("Estimate financial impact of the predictive maintenance strategy.")
     cost_fail = st.number_input("Cost of Unscheduled Failure ($)", value=10000)
     cost_prep = st.number_input("Cost of Planned Maintenance ($)", value=500)
@@ -124,7 +124,7 @@ with col_roi:
     """, unsafe_allow_html=True)
 
 # --- 7. TECHNICAL ROBUSTNESS FOOTER ---
-with st.expander("🛠️ Model Health & Stress Test Results"):
+with st.expander(" Model Health & Stress Test Results"):
     c1, c2 = st.columns(2)
     c1.image('stress_test_results.png', use_container_width=True, caption="Performance under Sensor Noise")
     c2.image('confidence_histogram.png', use_container_width=True, caption="Model Decisiveness Distribution")
